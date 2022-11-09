@@ -81,7 +81,7 @@ public class Soldier : MonoBehaviour
         {
             for(int i = 0; i < wanderPoints.Length; i++)
             {
-                _agent.SetDestination(wanderPoints[i].transform.position);
+                _agent.SetDestination(wanderPoints[i].position);
                 yield return new WaitForSeconds(1f);
             }
         }
@@ -121,6 +121,7 @@ public class Soldier : MonoBehaviour
 
     IEnumerator GiveDamage()
     {
+        gameObject.transform.LookAt(_target.transform);
         IsAttacking = true;
         while (_target != null)
         {
